@@ -24,6 +24,7 @@
       "@/assets/*": ["assets/*"],
       "@/styles/*": ["styles/*"],
       "@/data/*": ["data/*"],
+      "@/store/*": ["store/*"],
     }
   },
   "include": ["src"],
