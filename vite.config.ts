@@ -4,6 +4,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'react-chat-widget-ts',
+  base: '/react-chat-widget-ts/',
   plugins: [tsconfigPaths(), react()],
 })

@@ -13,9 +13,9 @@ cd dist
 echo > .nojekyll
 
 git init
-git checkout -B main
+git checkout -B deployment
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:Yousuf-Basir/react-chat-widget-ts.git main:gh-pages
+git push -f git@github.com:Yousuf-Basir/react-chat-widget-ts.git deployment:gh-pages
 
 cd -
