@@ -2,7 +2,7 @@ import { ElementType } from 'react';
 
 type BaseMessage = {
     type: string;
-    component: ElementType | null;
+    component: ElementType;
     sender: string;
     showAvatar: boolean;
     timestamp: Date;
@@ -18,7 +18,7 @@ export interface MessageTypes extends BaseMessage {
 export type QuickButtonTypes = {
     label: string;
     value: string | number;
-    component: ElementType | null;
+    component: ElementType;
 };
 
 export interface Link extends BaseMessage {
@@ -66,6 +66,6 @@ export interface FullscreenPreviewState extends ImageState {
 export interface GlobalState {
     messages: MessagesState;
     behavior: BehaviorState;
-    quickButtons: QuickButtonsState;
+    quickButton: QuickButtonsState;
     preview: FullscreenPreviewState;
 }

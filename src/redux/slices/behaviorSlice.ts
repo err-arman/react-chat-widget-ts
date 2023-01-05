@@ -11,7 +11,10 @@ export const behaviorSlice = createSlice({
     reducers: {
         toggleChat: (state: BehaviorState) => ({ ...state, showChat: !state.showChat}),
         toggleInputDissabled: (state: BehaviorState) => ({ ...state, disabledInput: !state.disabledInput }),
-        toggleMessageLoader: (state: BehaviorState) => ({ ...state, messageLoader: !state.messageLoader })
+        toggleMessageLoader: (state: BehaviorState) => {
+            console.log('state')
+            return ({ ...state, messageLoader: !state.messageLoader })
+        }
     }
 })
 

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import '@/styles/test.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { increment } from 'redux/slices/counterSlice'
+import TestChatWidget from 'TestChatWidget'
 
 function App() {
   const count = useSelector((state: any) => state.counter.value)
@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <TestChatWidget />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />

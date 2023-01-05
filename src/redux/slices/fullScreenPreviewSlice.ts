@@ -11,7 +11,7 @@ const initialState = {
 
 export const fullScreenPreviewSlice = createSlice({
     name: 'behavior',
-    initialState: initialState,
+    initialState: { ...initialState },
     reducers: {
         openFullScreenPreview: (state: FullscreenPreviewState, { payload }) => {
             const { src, width, height, alt } = payload

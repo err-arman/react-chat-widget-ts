@@ -2,9 +2,9 @@ import { ElementType } from 'react';
 
 import { MessageTypes as MessageI, Link, CustomCompMessage, LinkParams } from '@/types/StoreTypes';
 
-// import Message from '../components/Widget/components/Conversation/components/Messages/components/Message';
-// import Snippet from '../components/Widget/components/Conversation/components/Messages/components/Snippet';
-// import QuickButton from '../components/Widget/components/Conversation/components/QuickButtons/components/QuickButton';
+import Message from '@/components/Widget/components/Conversation/components/Messages/components/Message';
+import Snippet from '@/components/Widget/components/Conversation/components/Messages/components/Snippet';
+import QuickButton from '@/components/Widget/components/Conversation/components/QuickButtons/components/QuickButton';
 
 import { MESSAGES_TYPES, MESSAGE_SENDER, MESSAGE_BOX_SCROLL_DURATION } from '../constants';
 
@@ -15,8 +15,7 @@ export function createNewMessage(
 ): MessageI {
   return {
     type: MESSAGES_TYPES.TEXT,
-    // component: Message,
-    component: null,
+    component: Message,
     text,
     sender,
     timestamp: new Date(),
@@ -29,8 +28,7 @@ export function createNewMessage(
 export function createLinkSnippet(link: LinkParams, id?: string) : Link {
   return {
     type: MESSAGES_TYPES.SNIPPET.LINK,
-    // component: Snippet,
-    component: null,
+    component: Snippet,
     title: link.title,
     link: link.link,
     target: link.target || '_blank',
@@ -57,8 +55,7 @@ export function createComponentMessage(component: ElementType, props: any, showA
 
 export function createQuickButton(button: { label: string, value: string | number }) {
   return {
-    // component: QuickButton,
-    component: null,
+    component: QuickButton,
     label: button.label,
     value: button.value
   };

@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { BehaviorState, MessagesState } from '@/types/StoreTypes';
 import { createComponentMessage, createLinkSnippet, createNewMessage } from '@/utils/messages';
-import { MESSAGE_SENDER } from 'constants';
+import { MESSAGE_SENDER } from '../../constants';
+// import { MESSAGE_SENDER } from 'constants';
 
-const initialState = {
+const initialState: any = {
     messages: [],
     badgeCount: 0
 };
@@ -14,27 +15,25 @@ export const messagesSlice = createSlice({
     reducers: {
         addNewUserMessage: (state, action) => {
             const { text, id } = action.payload;
-            ({ ...state, messages: [...state.messages, createNewMessage(text, MESSAGE_SENDER.CLIENT, id)] })
+            return ({ ...state, messages: [...state.messages, createNewMessage(text, MESSAGE_SENDER.CLIENT, id)] })
         },
 
         addNewResponseMessage: (state: MessagesState, action) => {
             const { text, id } = action.payload;
-            ({ ...state, messages: [...state.messages, createNewMessage(text, MESSAGE_SENDER.RESPONSE, id)], badgeCount: state.badgeCount + 1 })
+            return { ...state, messages: [...state.messages, createNewMessage(text, MESSAGE_SENDER.RESPONSE, id)], badgeCount: state.badgeCount + 1 }
         },
 
         addNewLinkSnippet: (state: MessagesState, action) => {
             const { link, id } = action.payload;
-            ({ ...state, messages: [...state.messages, createLinkSnippet(link, id)] })
+            return ({ ...state, messages: [...state.messages, createLinkSnippet(link, id)] })
         },
 
         addComponentMessage: (state: MessagesState, action) => {
             const { component, props, showAvatar, id } = action.payload;
-            ({ ...state, messages: [...state.messages, createComponentMessage(component, props, showAvatar, id)] })
+            return ({ ...state, messages: [...state.messages, createComponentMessage(component, props, showAvatar, id)] })
         },
 
-        dropMessage: (state: MessagesState, action) => {
-            ({ ...state, messages: [] })
-        },
+        dropMessage: (state: MessagesState, action) => ({ ...state, messages: [] }),
 
         hideAvatar: (state: MessagesState, action) => {
             const { index } = action.payload;
@@ -43,7 +42,7 @@ export const messagesSlice = createSlice({
 
         deleteMessages: (state: MessagesState, action) => {
             const { count, id } = action.payload;
-            ({
+            return ({
                 ...state,
                 messages: id
                     ? state.messages.filter((_, index) => {
@@ -56,11 +55,11 @@ export const messagesSlice = createSlice({
 
         setBadgeCount: (state: MessagesState, action) => {
             const { count } = action.payload;
-            ({ ...state, badgeCount: count })
+            return ({ ...state, badgeCount: count })
         },
 
         markAllRead: (state: MessagesState, action) => {
-            ({ ...state, messages: state.messages.map(message => ({ ...message, unread: false })), badgeCount: 0 })
+            return ({ ...state, messages: state.messages.map(message => ({ ...message, unread: false })), badgeCount: 0 })
         }
     }
 })

@@ -15,4 +15,7 @@ export default configureStore({
     messages: messagesSlice,
     quickButton: quickButtonSlice
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false
+  }),
 })
