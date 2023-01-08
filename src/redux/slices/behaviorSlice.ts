@@ -12,7 +12,6 @@ export const behaviorSlice = createSlice({
         toggleChat: (state: BehaviorState) => ({ ...state, showChat: !state.showChat}),
         toggleInputDissabled: (state: BehaviorState) => ({ ...state, disabledInput: !state.disabledInput }),
         toggleMessageLoader: (state: BehaviorState) => {
-            console.log('state')
             return ({ ...state, messageLoader: !state.messageLoader })
         }
     }
