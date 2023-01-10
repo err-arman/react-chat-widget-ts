@@ -5,8 +5,9 @@ import store from 'redux/store'
 import { AnyFunction } from '@/utils/types'
 
 import WidgetLayout from './layout'
+import { ReactNode } from 'react'
 
-type Props = {
+export type WidgetProps = {
   title: string
   titleAvatar?: string
   subtitle: string
@@ -33,7 +34,9 @@ type Props = {
   handleSubmit?: AnyFunction
   showBadge?: boolean
   resizable?: boolean
-  emojis?: boolean
+  emojis?: boolean,
+  showStartScreen?: boolean,
+  startScreen?: ReactNode
 }
 
 function Widget({
@@ -64,7 +67,9 @@ function Widget({
   showBadge,
   resizable,
   emojis,
-}: Props) {
+  showStartScreen,
+  startScreen
+}: WidgetProps) {
   const dispatch = useDispatch()
   const showChat = useSelector((store: any) => store.behavior.showChat)
 
@@ -116,6 +121,8 @@ function Widget({
       showBadge={showBadge}
       resizable={resizable}
       emojis={emojis}
+      showStartScreen={showStartScreen}
+      startScreen={startScreen}
     />
   )
 }

@@ -1,0 +1,15 @@
+.register_form_root {
+    padding: 20px;
+}
+
+.register_form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px 0;
+}
+
+.form_submit_button {
+    margin-top: 10px;
+    font-size: 16px;
+}

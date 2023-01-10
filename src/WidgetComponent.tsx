@@ -1,4 +1,4 @@
-import Widget from '@/components/Widget'
+import Widget, { WidgetProps } from '@/components/Widget'
 import { ElementType } from 'react'
 import {
   ADD_COMPONENT_MESSAGE,
@@ -26,37 +26,9 @@ import {
 
 import { setQuickButtons } from 'redux/slices/quickButtonSlice'
 
-type Props = {
-  handleNewUserMessage: AnyFunction
-  handleQuickButtonClicked?: AnyFunction
-  title?: string
-  titleAvatar?: string
-  subtitle?: string
-  senderPlaceHolder?: string
-  showCloseButton?: boolean
-  fullScreenMode?: boolean
-  autofocus?: boolean
-  profileAvatar?: string
-  profileClientAvatar?: string
-  launcher?: AnyFunction
-  handleTextInputChange?: (event: any) => void
-  chatId?: string
-  handleToggle?: AnyFunction
-  launcherOpenLabel?: string
-  launcherCloseLabel?: string
-  launcherCloseImg?: string
-  launcherOpenImg?: string
-  sendButtonAlt?: string
-  showTimeStamp?: boolean
-  imagePreview?: boolean
-  zoomStep?: number
-  emojis?: boolean
-  handleSubmit?: AnyFunction
-  showBadge?: boolean
-  resizable?: boolean
-} & typeof defaultProps
+type Props = WidgetProps & typeof defaultProps
 
-function ConnectedWidget({
+function WidgetComponent({
   title,
   titleAvatar,
   subtitle,
@@ -66,7 +38,7 @@ function ConnectedWidget({
   autofocus,
   profileAvatar,
   profileClientAvatar,
-  launcher,
+  customLauncher,
   handleNewUserMessage,
   handleQuickButtonClicked,
   handleTextInputChange,
@@ -84,6 +56,8 @@ function ConnectedWidget({
   showBadge,
   resizable,
   emojis,
+  showStartScreen,
+  startScreen
 }: Props) {
   return (
     <Widget
@@ -98,7 +72,7 @@ function ConnectedWidget({
       showCloseButton={showCloseButton}
       fullScreenMode={fullScreenMode}
       autofocus={autofocus}
-      customLauncher={launcher}
+      customLauncher={customLauncher}
       handleTextInputChange={handleTextInputChange}
       chatId={chatId}
       handleToggle={handleToggle}
@@ -114,6 +88,8 @@ function ConnectedWidget({
       showBadge={showBadge}
       resizable={resizable}
       emojis={emojis}
+      showStartScreen={showStartScreen}
+      startScreen={startScreen}
     />
   )
 }
@@ -136,7 +112,7 @@ const defaultProps = {
   zoomStep: 80,
   showBadge: true,
 }
-ConnectedWidget.defaultProps = defaultProps
+WidgetComponent.defaultProps = defaultProps
 
 function renderCustomComponent(
   component: ElementType,
@@ -159,7 +135,7 @@ function isWidgetOpened(): boolean {
 
 
 export {
-  ConnectedWidget as Widget,
+  WidgetComponent as Widget,
   addNewUserMessage as addUserMessage,
   addNewResponseMessage as addResponseMessage,
   addNewLinkSnippet as addLinkSnippet,

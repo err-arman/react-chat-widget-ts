@@ -16,6 +16,7 @@ import {
   addNewUserMessage,
 } from 'redux/slices/messagesSlice'
 import { toggleMessageLoader } from 'redux/slices/behaviorSlice'
+import RegisterForm from './components/RegisterForm/RegisterForm'
 
 const TestChatWidget = () => {
   const dispatch = useDispatch()
@@ -76,28 +77,30 @@ const TestChatWidget = () => {
 
   const handleSubmit = (msgText: string) => {
     if (msgText.length < 80) {
-      dispatch(addNewUserMessage({
-        text: 'Uh oh, please write a bit more.'
-      }))
+      dispatch(
+        addNewUserMessage({
+          text: 'Uh oh, please write a bit more.',
+        }),
+      )
       return false
     }
     return true
   }
 
   return (
-    <div>
-      <button onClick={initializeChatWidget}>Show welcome message</button>
-      <Widget
-        title="Bienvenido"
-        subtitle="Asistente virtual"
-        senderPlaceHolder="Escribe aquí ..."
-        handleNewUserMessage={handleNewUserMessage}
-        handleQuickButtonClicked={handleQuickButtonClicked}
-        imagePreview
-        handleSubmit={handleSubmit}
-        emojis
-      />
-    </div>
+    <Widget
+      title="Hi there"
+      subtitle="How can we help you?"
+      senderPlaceHolder="Type message and hit enter"
+      handleNewUserMessage={handleNewUserMessage}
+      handleQuickButtonClicked={handleQuickButtonClicked}
+      imagePreview
+      handleSubmit={handleSubmit}
+      emojis
+      autofocus
+      showStartScreen={true}
+      startScreen={<RegisterForm />}
+    />
   )
 }
 

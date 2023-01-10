@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 
@@ -38,7 +38,9 @@ type Props = {
   zoomStep?: number;
   showBadge?: boolean;
   resizable?: boolean;
-  emojis?: boolean
+  emojis?: boolean,
+  showStartScreen?: boolean,
+  startScreen?: ReactNode
 }
 
 function WidgetLayout({
@@ -67,7 +69,9 @@ function WidgetLayout({
   zoomStep,
   showBadge,
   resizable,
-  emojis
+  emojis,
+  showStartScreen,
+  startScreen
 }: Props) {
   const dispatch = useDispatch();
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
@@ -127,7 +131,7 @@ function WidgetLayout({
         })
       }
     >
-      {showChat &&
+      {showChat ?
         <Conversation
           title={title}
           subtitle={subtitle}
@@ -147,11 +151,15 @@ function WidgetLayout({
           showTimeStamp={showTimeStamp}
           resizable={resizable}
           emojis={emojis}
+          showStartScreen={showStartScreen}
+          startScreen={startScreen}
         />
+        :null
       }
       {customLauncher ?
         customLauncher(onToggleConversation) :
         !fullScreenMode &&
+        // The circle button to toggle open/hide conversation
         <Launcher
           toggle={onToggleConversation}
           chatId={chatId}

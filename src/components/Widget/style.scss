@@ -1,6 +1,10 @@
 @import '../../scss/animation';
 @import '../../scss/common';
 
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
 .rcw-widget-container {
   bottom: 0;
   display: flex;
