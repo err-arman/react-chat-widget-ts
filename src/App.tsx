@@ -1,18 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { increment } from 'redux/slices/counterSlice'
-import TestChatWidget from 'TestChatWidget'
+import { useDispatch, useSelector } from "react-redux";
+import { increment } from "redux/slices/counterSlice";
+import TestChatWidget from "TestChatWidget";
+import "./App.css";
+import reactLogo from "./assets/react.svg";
 
 function App() {
-  const count = useSelector((state: any) => state.counter.value)
-  const dispatch = useDispatch()
+  const count = useSelector((state: any) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
       <TestChatWidget />
       <div>
+        {/* To see the deployment is changing or not */}
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
@@ -22,9 +23,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => dispatch(increment())}>
-          count is {count}
-        </button>
+        <button onClick={() => dispatch(increment())}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -33,7 +32,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
