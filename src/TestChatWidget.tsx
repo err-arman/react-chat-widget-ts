@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {
   addLinkSnippet,
@@ -20,6 +20,8 @@ import RegisterForm from './components/RegisterForm/RegisterForm'
 
 const TestChatWidget = () => {
   const dispatch = useDispatch()
+  const [inputValues, setInputValues] = useState({})
+  const [showRegisterForm, setShowRegisterForm] = useState(true)
 
   const initializeChatWidget = () => {
     dispatch(
@@ -87,6 +89,14 @@ const TestChatWidget = () => {
     return true
   }
 
+  const handleRegisterFormSubmit = (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault()
+    console.log(inputValues)
+    setShowRegisterForm(false)
+  }
+
   return (
     <Widget
       title="Hi there"
@@ -98,8 +108,14 @@ const TestChatWidget = () => {
       handleSubmit={handleSubmit}
       emojis
       autofocus
-      showStartScreen={true}
-      startScreen={<RegisterForm />}
+      showStartScreen={showRegisterForm}
+      startScreen={
+        <RegisterForm
+          inputValues={inputValues}
+          setInputValues={setInputValues}
+          handleSubmit={handleRegisterFormSubmit}
+        />
+      }
     />
   )
 }
