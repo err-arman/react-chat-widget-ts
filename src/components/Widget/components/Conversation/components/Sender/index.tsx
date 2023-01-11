@@ -7,6 +7,7 @@ import { GlobalState } from '@/types/StoreTypes';
 import { getCaretIndex, isFirefox, updateCaret, insertNodeAtCaret, getSelection } from '@/utils/contentEditable'
 import send from '@/assets/send_button.svg';
 import emoji from '@/assets/icon-smiley.svg';
+import attach_file from '@/assets/icon-attach-file.svg';
 
 const brRegex = /<br>/g;
 
@@ -127,9 +128,16 @@ function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInpu
 
   return (
     <div ref={refContainer} className="rcw-sender">
+      {/* emoji picker button */}
       <button className='rcw-picker-btn' type="submit" onClick={handlerPressEmoji}>
         <img src={emoji} className="rcw-picker-icon" alt="" />
       </button>
+      {/* file upload button */}
+      <button className='rcw-picker-btn' >
+        <img src={attach_file} className="rcw-picker-icon" alt="" />
+      </button>
+
+      {/* message input */}
       <div className={cn('rcw-new-message', {
           'rcw-message-disable': disabledInput,
         })
@@ -148,6 +156,8 @@ function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInpu
         />
         
       </div>
+
+      {/* Send button */}
       <button type="submit" className="rcw-send" onClick={handlerSendMessage}>
         <img src={send} className="rcw-send-icon" alt={buttonAlt} />
       </button>
