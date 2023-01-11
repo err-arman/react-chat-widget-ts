@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  addLinkSnippet,
-  addResponseMessage,
-  addUserMessage,
-  // setQuickButtons,
-  // toggleMsgLoader,
-  Widget,
-} from 'WidgetComponent'
 
 import { setQuickButtons } from 'redux/slices/quickButtonSlice'
 import {
@@ -16,9 +8,10 @@ import {
   addNewUserMessage,
 } from 'redux/slices/messagesSlice'
 import { toggleMessageLoader } from 'redux/slices/behaviorSlice'
-import RegisterForm from './components/RegisterForm/RegisterForm'
+import { addResponseMessage, ChatWidget } from '@/components/Widget/ChatWidget'
+import RegisterForm from '@/components/RegisterForm/RegisterForm'
 
-const TestChatWidget = () => {
+const Home = () => {
   const dispatch = useDispatch()
   const [inputValues, setInputValues] = useState({})
   const [showRegisterForm, setShowRegisterForm] = useState(true)
@@ -98,7 +91,7 @@ const TestChatWidget = () => {
   }
 
   return (
-    <Widget
+    <ChatWidget
       title="Hi there"
       subtitle="How can we help you?"
       senderPlaceHolder="Type message and hit enter"
@@ -120,4 +113,4 @@ const TestChatWidget = () => {
   )
 }
 
-export default TestChatWidget
+export default Home

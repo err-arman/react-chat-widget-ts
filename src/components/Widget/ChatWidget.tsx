@@ -1,11 +1,5 @@
 import Widget, { WidgetProps } from '@/components/Widget'
 import { ElementType } from 'react'
-import {
-  ADD_COMPONENT_MESSAGE,
-  RenderCustomComponent,
-} from './types/ActionTypes'
-
-import { AnyFunction } from '@/utils/types'
 import store from 'redux/store'
 import {
   addNewUserMessage,
@@ -25,10 +19,11 @@ import {
 } from 'redux/slices/behaviorSlice'
 
 import { setQuickButtons } from 'redux/slices/quickButtonSlice'
+import { ADD_COMPONENT_MESSAGE, RenderCustomComponent } from '@/types/ActionTypes'
 
 type Props = WidgetProps & typeof defaultProps
 
-function WidgetComponent({
+function ChatWidget({
   title,
   titleAvatar,
   subtitle,
@@ -112,7 +107,7 @@ const defaultProps = {
   zoomStep: 80,
   showBadge: true,
 }
-WidgetComponent.defaultProps = defaultProps
+ChatWidget.defaultProps = defaultProps
 
 function renderCustomComponent(
   component: ElementType,
@@ -135,7 +130,7 @@ function isWidgetOpened(): boolean {
 
 
 export {
-  WidgetComponent as Widget,
+  ChatWidget,
   addNewUserMessage as addUserMessage,
   addNewResponseMessage as addResponseMessage,
   addNewLinkSnippet as addLinkSnippet,
